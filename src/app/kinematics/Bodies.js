@@ -4,7 +4,9 @@ import Body from './Body';
 export default class Bodies {
   constructor() {
     this.type = 'sprite'; // draw / sprite
+    this._enableDraw = true;
     this._segmentLength = 0;
+    this._showBodies = true;
 
     this.display = new Container();
 
@@ -25,6 +27,7 @@ export default class Bodies {
 
   addBody(segmentLength) {
     const body = new Body(0, 0, segmentLength, 0);
+    body.display.visible = this._showBodies;
     if (this.lastBody) {
       body.x = this.lastBody.getEndX();
       body.y = this.lastBody.getEndY();
@@ -68,6 +71,13 @@ export default class Bodies {
     this.drawSprites(true);
   }
 
+  showBodies(value) {
+    this._showBodies = value;
+    for (let i = 0; i < this.bodies.length; i++) {
+      this.bodies[i].display.visible = value;
+    }
+  }
+
   drawGraphic() {
     /**
      * Using single graphic that each body draws on.
@@ -89,7 +99,6 @@ export default class Bodies {
      * Using bodies with sprites with static graphic.
      * Rotation
      */
-    console.log(this.bodies.length);
     for (let i = 0; i < this.bodies.length; i++) {
       if (i === this.bodies.length - 1) {
         this.bodies[i].updateSprite(true, forceRedraw);
@@ -103,7 +112,13 @@ export default class Bodies {
     if (this.lastBody) {
       this.lastBody.drag(x, y);
     }
-    this.drawSprites();
+    if (this._enableDraw) {
+      this.drawSprites();
+    }
+  }
+
+  enableDraw(value) {
+    this._enableDraw = value;
   }
 
   get segmentLength() {

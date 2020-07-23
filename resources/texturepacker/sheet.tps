@@ -4,7 +4,7 @@
         <key>fileFormatVersion</key>
         <int>4</int>
         <key>texturePackerVersion</key>
-        <string>5.3.0</string>
+        <string>5.4.0</string>
         <key>autoSDSettings</key>
         <array>
             <struct type="AutoSDSettings">
@@ -258,6 +258,36 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
+            <key type="filename">snake.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0,0</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>92,12,184,25</rect>
+                <key>scale9Paddings</key>
+                <rect>92,12,184,25</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">snake2.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0,0</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>121,25,241,49</rect>
+                <key>scale9Paddings</key>
+                <rect>121,25,241,49</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
         </map>
         <key>fileList</key>
         <array>
@@ -265,6 +295,8 @@
             <filename>letter-h.png</filename>
             <filename>letter-o.png</filename>
             <filename>letter-y.png</filename>
+            <filename>snake.png</filename>
+            <filename>snake2.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

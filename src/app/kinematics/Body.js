@@ -47,16 +47,16 @@ export default class Body {
 
       this.display.cacheAsBitmap = false;
       this.lineGraphic.clear();
-      this.lineGraphic.lineStyle(2, 0xff0099);
+      this.lineGraphic.lineStyle(2, 0x2fa1d6);
 
       if (firstArm) {
-        this.lineGraphic.beginFill(0xcccccc);
-        this.lineGraphic.drawCircle(this.length, 0, 10);
+        this.lineGraphic.beginFill(0x2fa1d6);
+        this.lineGraphic.drawCircle(this.length / 2, 0, 10);
       }
       this.lineGraphic.lineTo(this.length, 0);
 
       this.display.pivot.x = this.length;
-      this.display.cacheAsBitmap = true;
+      // this.display.cacheAsBitmap = true;
     }
     this.display.x = this.getEndX();
     this.display.y = this.getEndY();

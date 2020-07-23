@@ -1,4 +1,4 @@
-import { Application } from 'pixi.js';
+import { Application, SimpleRope, Texture } from 'pixi.js';
 import Stats from 'stats.js';
 import * as dat from 'dat.gui';
 import Geom from 'utils/Geom';
@@ -6,6 +6,7 @@ import MathUtils from 'utils/MathUtils';
 import appStore from './appStore';
 import Resources from './Resources';
 import TouchInput from './TouchInput';
+// eslint-disable-next-line no-unused-vars
 import Bodies from './kinematics/Bodies';
 
 export default class App {
@@ -34,6 +35,7 @@ export default class App {
     appStore.height = this.height;
     appStore.app = this.app;
     this.htmlElement.appendChild(this.app.view);
+    this.display = this.app.stage;
   }
 
   setupStats() {
@@ -56,6 +58,7 @@ export default class App {
     gui.add(appStore, 'circleSpeed', 0, 1);
     gui.add(appStore, 'waveSpeed', 0, 1);
     gui.add(appStore, 'waveAmplitude', 0, 1);
+    gui.add(appStore, 'enablePixiRope');
   }
 
   start() {
@@ -76,14 +79,34 @@ export default class App {
     this.bodies.drag(500, 500);
 
     this.touchInput = new TouchInput();
-    this.app.stage.addChild(this.touchInput.display);
+    this.display.addChild(this.touchInput.display);
 
     appStore.onSegmentLengthUpdate.add((value) => {
       this.bodies.segmentLength = value;
+      if (appStore.enablePixiRope) {
+        this.updateRope();
+      }
     });
 
     appStore.onNumSegmentUpdate.add((value) => {
       this.bodies.numSegments = value;
+      if (appStore.enablePixiRope) {
+        this.updateRope();
+      }
+    });
+
+    appStore.onEnablePixiRopeUpdate.add((value) => {
+      this.bodies.enableDraw = !value;
+      if (!value) {
+        if (this.rope) {
+          this.rope.destroy();
+          this.rope = null;
+        }
+        this.bodies.showBodies(true);
+      } else {
+        this.bodies.showBodies(false);
+        this.updateRope();
+      }
     });
 
     appStore.onTouchMove.add((pos) => {
@@ -103,10 +126,20 @@ export default class App {
     this.onResize();
   }
 
+  updateRope() {
+    if (this.rope) {
+      this.rope.destroy();
+      this.rope = null;
+    }
+    this.rope = new SimpleRope(Texture.from('snake2.png'), this.bodies.bodies);
+    this.app.stage.addChild(this.rope);
+  }
+
   update() {
     this.stats.begin();
-
+    this.circleIndex += 0.01;
     // update stuff
+
     if (this.autoDrag) {
       this.circleIndex += 0.04 * appStore.circleSpeed;
       this.waveIndex += 0.2 * appStore.waveSpeed;
@@ -130,7 +163,9 @@ export default class App {
         radius,
         this.circleIndex
       );
-      this.bodies.drag(dragPos.x, dragPos.y);
+      if (this.bodies) {
+        this.bodies.drag(dragPos.x, dragPos.y);
+      }
     }
 
     this.stats.end();

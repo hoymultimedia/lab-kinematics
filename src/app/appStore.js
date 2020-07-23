@@ -10,13 +10,15 @@ const onTouchMove = new Signal();
 
 const onNumSegmentUpdate = new Signal();
 const onSegmentLengthUpdate = new Signal();
+const onEnablePixiRopeUpdate = new Signal();
 
-let _numSegments = 3;
-let _segmentLength = 40;
+let _numSegments = 20;
+let _segmentLength = 10;
 let _circleRadius = 0.5;
 let _circleSpeed = 0.5;
 let _waveSpeed = 0.5;
 let _waveAmplitude = 0.5;
+let _enablePixiRope = false;
 
 export default {
   app,
@@ -27,6 +29,7 @@ export default {
   onTouchMove,
   onNumSegmentUpdate,
   onSegmentLengthUpdate,
+  onEnablePixiRopeUpdate,
 
   get numSegments() {
     return _numSegments;
@@ -70,5 +73,13 @@ export default {
   },
   set waveAmplitude(value) {
     _waveAmplitude = value;
+  },
+
+  get enablePixiRope() {
+    return _enablePixiRope;
+  },
+  set enablePixiRope(value) {
+    _enablePixiRope = value;
+    onEnablePixiRopeUpdate.dispatch(value);
   },
 };
