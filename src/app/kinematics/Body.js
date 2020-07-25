@@ -56,7 +56,7 @@ export default class Body {
       this.lineGraphic.lineTo(this.length, 0);
 
       this.display.pivot.x = this.length;
-      // this.display.cacheAsBitmap = true;
+      this.display.cacheAsBitmap = true;
     }
     this.display.x = this.getEndX();
     this.display.y = this.getEndY();

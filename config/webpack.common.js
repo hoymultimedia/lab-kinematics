@@ -24,6 +24,22 @@ module.exports = {
         ],
       },
       {
+        /** SVG Loaders
+
+         */
+        test: /\.svg$/,
+        exclude: /node_modules/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[name].[ext]',
+              outputPath: 'assets/images/',
+            },
+          },
+        ],
+      },
+      {
         // JSON Loader
         type: 'javascript/auto',
         test: /\.(json)/,
@@ -55,6 +71,23 @@ module.exports = {
             },
           },
         ],
+      },
+      {
+        test: /\.(html)$/,
+        use: {
+          loader: 'html-loader',
+          options: {
+            attributes: {
+              list: [
+                {
+                  tag: 'img',
+                  attribute: 'src',
+                  type: 'src',
+                },
+              ],
+            },
+          },
+        },
       },
     ],
   },

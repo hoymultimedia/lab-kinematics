@@ -40,6 +40,7 @@ export default class App {
 
   setupStats() {
     this.stats = new Stats();
+    this.stats.dom.style = 'top:0; right:270px; position:fixed';
     document.body.appendChild(this.stats.dom);
   }
 
