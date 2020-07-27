@@ -19,6 +19,7 @@ let _circleSpeed = 0.5;
 let _waveSpeed = 0.5;
 let _waveAmplitude = 0.5;
 let _enablePixiRope = false;
+let _enableDrawPath = false;
 
 export default {
   app,
@@ -81,5 +82,11 @@ export default {
   set enablePixiRope(value) {
     _enablePixiRope = value;
     onEnablePixiRopeUpdate.dispatch(value);
+  },
+  get enableDrawPath() {
+    return _enableDrawPath;
+  },
+  set enableDrawPath(value) {
+    _enableDrawPath = value;
   },
 };

@@ -1,4 +1,4 @@
-import { Application, SimpleRope, Texture } from 'pixi.js';
+import { Application, SimpleRope, Texture, Graphics } from 'pixi.js';
 import Stats from 'stats.js';
 import * as dat from 'dat.gui';
 import Geom from 'utils/Geom';
@@ -60,6 +60,7 @@ export default class App {
     gui.add(appStore, 'waveSpeed', 0, 1);
     gui.add(appStore, 'waveAmplitude', 0, 1);
     gui.add(appStore, 'enablePixiRope');
+    gui.add(appStore, 'enableDrawPath');
   }
 
   start() {
@@ -76,8 +77,11 @@ export default class App {
 
     this.bodies = new Bodies();
     this.bodies.init(appStore.numSegments, appStore.segmentLength);
-    this.app.stage.addChild(this.bodies.display);
+    this.display.addChild(this.bodies.display);
     this.bodies.drag(500, 500);
+
+    this.lineGraphic = new Graphics();
+    this.display.addChild(this.lineGraphic);
 
     this.touchInput = new TouchInput();
     this.display.addChild(this.touchInput.display);
@@ -166,6 +170,14 @@ export default class App {
       );
       if (this.bodies) {
         this.bodies.drag(dragPos.x, dragPos.y);
+      }
+
+      if (appStore.enableDrawPath) {
+        this.lineGraphic.beginFill(0);
+        this.lineGraphic.moveTo(dragPos.x, dragPos.y);
+        this.lineGraphic.drawRect(dragPos.x, dragPos.y, 1, 1);
+      } else {
+        this.lineGraphic.clear();
       }
     }
 
