@@ -1,5 +1,7 @@
 # Kinematics
 
+[Demo](https://lab.hoy.se/labs/kinematics/)
+
 #### Run
 
 ```bash
