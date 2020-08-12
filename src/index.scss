@@ -1,6 +1,87 @@
 $bg-color: #cccccc;
 $animation-delay: 0.4;
 
+@font-face {
+  font-family: 'Circular Std Book';
+  src: url('assets/fonts/CircularStd-Book.woff2') format('woff2'),
+    url('assets/fonts/CircularStd-Book.woff') format('woff');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Circular Std';
+  src: url('assets/fonts/CircularStd-Medium.woff2') format('woff2'),
+    url('assets/fonts/CircularStd-Medium.woff') format('woff');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Circular Std';
+  src: url('assets/fonts/CircularStd-Bold.woff2') format('woff2'),
+    url('assets/fonts/CircularStd-Bold.woff') format('woff');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Circular Std';
+  src: url('assets/fonts/CircularStd-Black.woff2') format('woff2'),
+    url('assets/fonts/CircularStd-Black.woff') format('woff');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Circular Std';
+  src: url('assets/fonts/CircularStd-Black.woff2') format('woff2'),
+    url('assets/fonts/CircularStd-Black.woff') format('woff');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Circular Std';
+  src: url('assets/fonts/CircularStd-Medium.woff2') format('woff2'),
+    url('assets/fonts/CircularStd-Medium.woff') format('woff');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Circular Std';
+  src: url('assets/fonts/CircularStd-Bold.woff2') format('woff2'),
+    url('assets/fonts/CircularStd-Bold.woff') format('woff');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Circular Std';
+  src: url('assets/fonts/CircularStd-Black.woff2') format('woff2'),
+    url('assets/fonts/CircularStd-Black.woff') format('woff');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Circular Std Book';
+  src: url('assets/fonts/CircularStd-Book.woff2') format('woff2'),
+    url('assets/fonts/CircularStd-Book.woff') format('woff');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
 html,
 body {
   width: 100%;
@@ -14,7 +95,13 @@ body {
   color: #fff;
   font-weight: 400;
   font-size: 16px;
-  font-family: 'Circular', sans-serif;
+  font-family: 'Circular Std', sans-serif;
+
+  a {
+    &:hover {
+      text-decoration: underline;
+    }
+  }
 
   .link {
     width: 20px;
@@ -119,11 +206,12 @@ body {
       left: -100px;
 
       opacity: 0;
+      visibility: hidden;
     }
 
     to {
       left: 40px;
-
+      visibility: visible;
       opacity: 1;
     }
   }
@@ -146,9 +234,11 @@ body {
 
   @keyframes fadeIn {
     from {
+      visibility: hidden;
       opacity: 0;
     }
     to {
+      visibility: visible;
       opacity: 1;
     }
   }

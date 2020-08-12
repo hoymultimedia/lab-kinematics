@@ -56,6 +56,22 @@ module.exports = {
       },
       {
         /**
+         * Font Loader
+         */
+        test: /\.(woff|woff2)$/,
+        exclude: /node_modules/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[name].[ext]',
+              outputPath: 'assets/fonts/',
+            },
+          },
+        ],
+      },
+      {
+        /**
          * Loader for bitmap fonts. (.fnt and .png from src/assets/bmpfonts/)
          * src/assets/bmpfonts/ is excluded in the default image loader.
          */
@@ -103,7 +119,8 @@ module.exports = {
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
       title: PACKAGE.name,
-      template: './src/index.html',
+      template: path.resolve(__dirname, '../src/index.html'),
+      favicon: './src/assets/favicon.png',
     }),
     new MiniCssExtractPlugin({
       filename: '[name].css',
@@ -113,7 +130,7 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, '../', 'dist'),
     publicPath: '',
-    filename: 'bundle.js',
+    filename: 'main[hash].js',
   },
   stats: {
     chunks: false,
