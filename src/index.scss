@@ -93,9 +93,12 @@ body {
   background-color: $bg-color;
 
   color: #fff;
-  font-weight: 400;
+  font-weight: 500;
   font-size: 16px;
   font-family: 'Circular Std', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
   overflow: hidden;
 
   a {
@@ -123,6 +126,10 @@ body {
     overflow-x: hidden;
     overflow-y: auto;
 
+    @media screen and (max-width: 768px) {
+      min-height: 320px;
+    }
+
     .app {
       width: 90%;
       height: 90%;
@@ -131,6 +138,11 @@ body {
       max-height: 800px;
 
       line-height: 0;
+
+      @media screen and (max-width: 768px) {
+        width: 100%;
+        height: 100%;
+      }
     }
   }
 
@@ -138,11 +150,18 @@ body {
     position: absolute;
     display: flex;
     top: 40px;
-
+    left: 40px;
     color: white;
     text-decoration: none;
     animation: fadeFromLeft 0.8s ease 1s both;
     animation-delay: $animation-delay;
+    animation-timing-function: ease-out;
+
+    @media screen and (max-width: 768px) {
+      animation: fadeFromLeftMobile 0.8s ease 1s both;
+      left: 20px;
+      top: 20px;
+    }
 
     > .wrapper-link {
       display: flex;
@@ -178,28 +197,34 @@ body {
   .wrapper-made-with {
     position: absolute;
     bottom: 40px;
-    overflow: hidden;
+    overflow-x: hidden;
 
-    color: white;
     animation: fadeFromRight 0.8s ease 1s both;
     animation-delay: $animation-delay;
+    animation-timing-function: ease-out;
+
+    @media screen and (max-width: 768px) {
+      animation: fadeFromRightMobile 0.8s ease 1s both;
+      bottom: 20px;
+    }
   }
 
   .wrapper-links {
     position: absolute;
-    bottom: 0;
+    bottom: 40px;
     left: 40px;
-    display: flex;
-
-    align-items: center;
-    justify-content: space-between;
-
-    width: 160px;
-    height: 84px;
+    overflow-x: hidden;
 
     background-color: transparent;
     animation: fadeFromLeft 0.8s ease 1s both;
     animation-delay: $animation-delay;
+    animation-timing-function: ease-out;
+
+    @media screen and (max-width: 768px) {
+      animation: fadeFromLeftMobile 0.8s ease 1s both;
+      bottom: 20px;
+      left: 20px;
+    }
   }
 
   .page-title {
@@ -208,8 +233,16 @@ body {
     top: 50px;
     left: 40px;
 
-    animation: fadeIn 0.8s ease 1s both;
-    animation-delay: $animation-delay;
+    animation: fadeIn 0.8s ease 1.8s both;
+    animation-timing-function: ease-out;
+
+    @media screen and (max-width: 768px) {
+      top: 45px;
+      left: 20px;
+      font-size: 35px;
+
+      animation: fadeInMobile 0.8s ease 1.8s both;
+    }
   }
 
   @keyframes fadeFromLeft {
@@ -222,6 +255,21 @@ body {
 
     to {
       left: 40px;
+      visibility: visible;
+      opacity: 1;
+    }
+  }
+
+  @keyframes fadeFromLeftMobile {
+    from {
+      left: -100px;
+
+      opacity: 0;
+      visibility: hidden;
+    }
+
+    to {
+      left: 20px;
       visibility: visible;
       opacity: 1;
     }
@@ -243,14 +291,45 @@ body {
     }
   }
 
+  @keyframes fadeFromRightMobile {
+    from {
+      right: -100px;
+
+      visibility: hidden;
+      opacity: 0;
+    }
+
+    to {
+      right: 20px;
+
+      visibility: visible;
+      opacity: 1;
+    }
+  }
+
   @keyframes fadeIn {
     from {
       visibility: hidden;
       opacity: 0;
+      top: 65px;
     }
     to {
       visibility: visible;
       opacity: 1;
+      top: 50px;
+    }
+  }
+
+  @keyframes fadeInMobile {
+    from {
+      visibility: hidden;
+      opacity: 0;
+      top: 45px;
+    }
+    to {
+      visibility: visible;
+      opacity: 1;
+      top: 35px;
     }
   }
 }
