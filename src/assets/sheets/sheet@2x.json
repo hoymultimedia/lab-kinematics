@@ -47,16 +47,25 @@
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":482,"h":98},
 	"sourceSize": {"w":482,"h":98}
+},
+"snake3.png":
+{
+	"frame": {"x":1,"y":747,"w":482,"h":98},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":482,"h":98},
+	"sourceSize": {"w":482,"h":98}
 }},
 "animations": {
+	"snake": ["snake2.png","snake3.png"]
 },
 "meta": {
 	"app": "https://www.codeandweb.com/texturepacker",
 	"version": "1.0",
 	"image": "sheet@2x.png",
 	"format": "RGBA8888",
-	"size": {"w":732,"h":803},
+	"size": {"w":732,"h":846},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:37f6b3bff791420de15aa8ddeb88e69b:9e40ce555bf064fa65f7a0c0ba43b9c3:1ad5cd8e5ef51d6329531e2689bd95b2$"
+	"smartupdate": "$TexturePacker:SmartUpdate:65780e7b05834e137062afd168a8b80d:3bd2dfd756f6cc2d1414aeeccfa2c5fb:1ad5cd8e5ef51d6329531e2689bd95b2$"
 }
 }

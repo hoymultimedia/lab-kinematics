@@ -12,13 +12,13 @@ const onNumSegmentUpdate = new Signal();
 const onSegmentLengthUpdate = new Signal();
 const onEnablePixiRopeUpdate = new Signal();
 
-let _numSegments = 20;
+let _numSegments = 30;
 let _segmentLength = 10;
 let _circleRadius = 0.5;
 let _circleSpeed = 0.5;
 let _waveSpeed = 0.5;
 let _waveAmplitude = 0.5;
-let _enablePixiRope = false;
+let _enablePixiRope = true;
 let _enableDrawPath = false;
 
 export default {

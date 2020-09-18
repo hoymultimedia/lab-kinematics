@@ -128,6 +128,10 @@ export default class App {
       this.update();
     });
 
+    this.bodies.showBodies(false);
+    this.updateRope();
+    this.update();
+
     this.onResize();
   }
 
@@ -136,7 +140,7 @@ export default class App {
       this.rope.destroy();
       this.rope = null;
     }
-    this.rope = new SimpleRope(Texture.from('snake2.png'), this.bodies.bodies);
+    this.rope = new SimpleRope(Texture.from('snake3.png'), this.bodies.bodies);
     this.app.stage.addChild(this.rope);
   }
 
