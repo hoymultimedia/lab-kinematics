@@ -274,6 +274,7 @@
                 <false/>
             </struct>
             <key type="filename">snake2.png</key>
+            <key type="filename">snake3.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0,0</point_f>
@@ -297,6 +298,7 @@
             <filename>letter-y.png</filename>
             <filename>snake.png</filename>
             <filename>snake2.png</filename>
+            <filename>snake3.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>
